@@ -22,12 +22,6 @@ router.post(
   body("telephone")
     .notEmpty()
     .withMessage("El número de teléfono del propietario no puede estar vacío"),
-  body("date")
-    .notEmpty()
-    .withMessage("La fecha de salida de la mascota no puede estar vacía"),
-  body("symptoms")
-    .notEmpty()
-    .withMessage("Los sintomas no pueden estar vacíos"),
   body("size").notEmpty().withMessage("El tamaño no puede estar vacío"),
   body("typePet")
     .notEmpty()

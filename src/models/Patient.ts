@@ -5,7 +5,6 @@ export interface IPatient extends Document {
   propietor: string;
   docPropietor: string;
   telephone: string;
-  date: Date;
   state: boolean;
   symptoms: string;
   size: string;
@@ -31,17 +30,12 @@ const PatientSchema: Schema = new Schema(
       type: String,
       required: true,
     },
-    date: {
-      type: Date,
-      required: true,
-    },
     state: {
       type: Boolean,
       default: true,
     },
     symptoms: {
       type: String,
-      required: true,
     },
     size: {
       type: String,

@@ -8,7 +8,6 @@ export const formatUpdatePatient = async (
   patient.propietor = object.propietor || patient.propietor;
   patient.docPropietor = object.docPropietor || patient.docPropietor;
   patient.telephone = object.telephone || patient.telephone;
-  patient.date = object.date || patient.date;
   patient.state = object.state;
   patient.symptoms = object.symptoms || patient.symptoms;
   patient.size = object.size || patient.size;
