@@ -1,11 +1,12 @@
 import express from "express";
-import dotenv from  "dotenv";
+import dotenv from "dotenv";
 import { connectDB } from "./config/db";
-import authRoutes from "./routes/authRoutes"
-import veterinaryRoutes from "./routes/VeterinaryRoutes"
-import patientRoutes from "./routes/patientRoutes"
-import historiesRoutes from "./routes/historiesRoutes"
-import cors from "cors"
+import authRoutes from "./routes/authRoutes";
+import veterinaryRoutes from "./routes/VeterinaryRoutes";
+import patientRoutes from "./routes/patientRoutes";
+import historiesRoutes from "./routes/historiesRoutes";
+import categoryRoutes from "./routes/categoryRoutes";
+import cors from "cors";
 import { corsConfig } from "./config/cors";
 //Para utilizar variables de entorno
 dotenv.config();
@@ -15,8 +16,9 @@ const app = express();
 app.use(cors(corsConfig));
 
 app.use(express.json());
-app.use("/api/auth",authRoutes);
-app.use("/api/veterinaries",veterinaryRoutes);
-app.use("/api/patients",patientRoutes);
-app.use("/api/histories",historiesRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/veterinaries", veterinaryRoutes);
+app.use("/api/patients", patientRoutes);
+app.use("/api/histories", historiesRoutes);
+app.use("/api/category", categoryRoutes);
 export default app;
