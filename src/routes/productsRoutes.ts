@@ -33,7 +33,7 @@ router.post(
   ProductController.createProduct
 );
 router.delete(
-  "/delete-category/:id",
+  "/delete-product/:id",
   param("id").isMongoId().withMessage(PRODUCT_ERRORS.PRODUCT_ID_NOT_VALID),
   handleInputErrors,
   authenticate,
