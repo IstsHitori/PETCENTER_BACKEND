@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import Category from "../models/Category";
-import { RequiredPathKeys } from "mongoose/types/inferschematype";
 import { CATEGORY_ERRORS } from "../utils/errors";
 export class CategoryController {
   static createCategory = async (req: Request, res: Response) => {
