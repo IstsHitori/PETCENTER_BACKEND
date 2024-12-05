@@ -4,6 +4,12 @@ import { CATEGORY_ERRORS } from "../utils/errors";
 export class CategoryController {
   static createCategory = async (req: Request, res: Response) => {
     try {
+      const {name} = req.body;
+      const searchCategory = await Category.findOne({name});
+      if(searchCategory){
+        const error = new Error(CATEGORY_ERRORS.CATEGORY_EXIST);
+        return res.status(402).json({msg:error.message});
+      }
       const category = new Category(req.body);
       await category.save();
       res.send("Se ha creado la categoria");

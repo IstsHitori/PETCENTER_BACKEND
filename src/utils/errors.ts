@@ -18,5 +18,6 @@ export enum PRODUCT_ERRORS {
     PRICE_ARE_NOT_NUMBER= "El precio debe ser numérico",
     QUANTITY_ARE_NOT_NUMBER= "La cantidad debe ser numérico",
     PRODUCT_DOESNT_EXIST = "Este producto no existe",
+    PRODUCT_EXIST = "Ya existe un producto con este nombre",
 
 }
