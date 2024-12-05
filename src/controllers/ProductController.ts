@@ -61,7 +61,7 @@ export class ProductController {
       searchProduct.category = category;
       searchProduct.brand = brand;
 
-      await searchProduct.updateOne();
+      await searchProduct.save();
       res.send("Se ha actualizado el producto");
     } catch (error) {
       console.log(error);
