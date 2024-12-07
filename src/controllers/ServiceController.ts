@@ -11,7 +11,7 @@ export class ServiceController {
   static orderService = async (req: Request, res: Response) => {
     try {
       const { id } = req.params;
-      const { name, price, days, product } = req.body;
+      const { name, price, days, product,type } = req.body;
       let service;
       const searchPatient = await Patient.findById(id);
       if (!searchPatient) {
@@ -37,7 +37,7 @@ export class ServiceController {
       //Cuando hay un servicio de hospitalización
       if (days) {
         console.log("days", req.body);
-        service = new Service({ name, price, days, patient: id });
+        service = new Service({ name, price, days, patient: id,type });
         await service.save();
         return res.send("Se ha registrado el servicio");
       }
