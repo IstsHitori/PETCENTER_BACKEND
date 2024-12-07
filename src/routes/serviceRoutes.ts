@@ -11,6 +11,7 @@ router.post(
   "/create-service/:id",
   param("id").isMongoId().withMessage(PATIENT_ERRORS.ID_PATIENT_NOT_VALID),
   body("name").notEmpty().withMessage(SERVICE_ERRORS.NAME_EMPTY),
+  body("state").notEmpty().withMessage(SERVICE_ERRORS.STATE_EMPTY),
   body("price")
     .notEmpty()
     .withMessage(SERVICE_ERRORS.PRICE_EMPTY)

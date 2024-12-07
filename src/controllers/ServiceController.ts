@@ -11,7 +11,7 @@ export class ServiceController {
   static orderService = async (req: Request, res: Response) => {
     try {
       const { id } = req.params;
-      const { name, price, days, product,type } = req.body;
+      const { name, price, days, product,type,state } = req.body;
       let service;
       const searchPatient = await Patient.findById(id);
       if (!searchPatient) {
@@ -30,20 +30,19 @@ export class ServiceController {
             return res.status(402).json({msg:error.message});
         }
         console.log("Producto");
-        service = new Service({ name, price, product, patient: id });
+        service = new Service({ name, price, product, patient: id,state });
         await service.save();
         return res.send("Se ha registrado el servicio");
       }
       //Cuando hay un servicio de hospitalización
       if (days) {
         console.log("days", req.body);
-        service = new Service({ name, price, days, patient: id,type });
+        service = new Service({ name, price, days, patient: id,type,state });
         await service.save();
         return res.send("Se ha registrado el servicio");
       }
       //Cuando hay un servicio de baño o peluqueria
-      service = new Service({ name, price, patient: id });
-      console.log("al final", req.body);
+      service = new Service({ name, price, patient: id,state});
       await service.save();
       return res.send("Se ha registrado el servicio");
     } catch (error) {
@@ -52,7 +51,7 @@ export class ServiceController {
   };
   static getAllServices = async (req: Request, res: Response) => {
     try {
-      const arrayServices = await Service.find();
+      const arrayServices = await Service.find().populate("product","name").populate("patient","name propietor");
       return res.json({ services: arrayServices });
     } catch (error) {}
   };

@@ -8,6 +8,7 @@ interface IService extends Document {
     product?:Types.ObjectId;
     patient:Types.ObjectId;
     type?:String;
+    state:String;
     date:Date
 }
 
@@ -39,6 +40,10 @@ const ServiceSchema : Schema = new Schema({
         default:function(){
             return Date();
         }
+    },
+    state:{
+        type:String,
+        required:true
     }
 });
 
