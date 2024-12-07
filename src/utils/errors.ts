@@ -21,3 +21,13 @@ export enum PRODUCT_ERRORS {
     PRODUCT_EXIST = "Ya existe un producto con este nombre",
 
 }
+
+export enum PATIENT_ERRORS{
+    PATIENT_DOES_NOT_EXIST = "Este paciente no existe",
+    ID_PATIENT_NOT_VALID = "ID de paciente no valido"
+}
+export enum SERVICE_ERRORS{
+    NAME_EMPTY = "El nombre del servicio no puede estar vacio",
+    PRICE_EMPTY = "El precio del servicio no puede estar vacio",
+    PRICE_NUMERIC = "El precio del servicio debe ser numérico",
+}
