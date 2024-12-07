@@ -7,6 +7,7 @@ interface IService extends Document {
     days?:number;
     product?:Types.ObjectId;
     patient:Types.ObjectId;
+    date:Date
 }
 
 const ServiceSchema : Schema = new Schema({
@@ -28,6 +29,12 @@ const ServiceSchema : Schema = new Schema({
     patient:{
         type:Types.ObjectId,
         ref:"Patient"
+    },
+    date:{
+        type:Date,
+        default:function(){
+            return Date();
+        }
     }
 });
 
