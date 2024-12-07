@@ -30,4 +30,6 @@ export enum SERVICE_ERRORS{
     NAME_EMPTY = "El nombre del servicio no puede estar vacio",
     PRICE_EMPTY = "El precio del servicio no puede estar vacio",
     PRICE_NUMERIC = "El precio del servicio debe ser numérico",
+    ID_NOT_VALID = "ID de servicio no valido",
+    PATIENT_NOT_TO_VACCINATE = "Paciente no permitido para vacunarse.",
 }

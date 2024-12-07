@@ -20,4 +20,12 @@ router.post(
   authenticate,
   ServiceController.orderService
 );
+router.get("/", authenticate, ServiceController.getAllServices);
+router.delete(
+  "/delete-service/:id",
+  param("id").isMongoId().withMessage(SERVICE_ERRORS.ID_NOT_VALID),
+  handleInputErrors,
+  authenticate,
+  ServiceController.deleteService
+);
 export default router;
