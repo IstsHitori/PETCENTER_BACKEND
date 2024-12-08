@@ -33,4 +33,6 @@ export enum SERVICE_ERRORS{
     ID_NOT_VALID = "ID de servicio no valido",
     PATIENT_NOT_TO_VACCINATE = "Paciente no permitido para vacunarse.",
     STATE_EMPTY = "El estado no puede estar vacío.",
+    SERVICE_NOT_FOUND = "El servicio no se encontro.",
+    
 }

@@ -21,6 +21,14 @@ router.post(
   authenticate,
   ServiceController.orderService
 );
+router.patch(
+  "/change-state/:id",
+  param("id").isMongoId().withMessage(SERVICE_ERRORS.ID_NOT_VALID),
+  body("state").notEmpty().withMessage(SERVICE_ERRORS.STATE_EMPTY),
+  handleInputErrors,
+  authenticate,
+  ServiceController.patchService
+);
 router.get("/", authenticate, ServiceController.getAllServices);
 router.delete(
   "/delete-service/:id",
