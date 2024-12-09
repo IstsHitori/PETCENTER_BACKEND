@@ -5,6 +5,7 @@ export interface IOrder extends Document {
   customer: Types.ObjectId;
   items: IOrder_Item[];
   total_amount: Number;
+  payment_method: String;
   date: Date;
 }
 
@@ -17,6 +18,10 @@ const OrderSchema: Schema = new Schema({
   items: [OrderItemsSchema],
   total_amount: {
     type: Number,
+  },
+  payment_method: {
+    type: String,
+    required: true,
   },
   date: {
     type: Date,

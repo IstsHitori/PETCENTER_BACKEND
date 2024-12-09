@@ -40,4 +40,5 @@ export enum ORDER_ERRORS{
     ITEM_EMPTY = "Error, no hay ningún item seleccionado para vender",
     CUSTOMER_EMPTY = "Error, no hay datos del cliente ",
     TOTAL_AMOUNT_EMPTY = "Error, se debe calcular el valor total a pagar ",
+    METHOD_EMPTY = "Error, se debe agregar el metodo de pago",
 }

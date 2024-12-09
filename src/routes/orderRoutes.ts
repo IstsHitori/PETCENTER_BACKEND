@@ -13,6 +13,7 @@ router.post(
   body("items").notEmpty().withMessage(ORDER_ERRORS.ITEM_EMPTY),
   body("customer").notEmpty().withMessage(ORDER_ERRORS.CUSTOMER_EMPTY),
   body("total_amount").notEmpty().withMessage(ORDER_ERRORS.TOTAL_AMOUNT_EMPTY),
+  body("payment_method").notEmpty().withMessage(ORDER_ERRORS.METHOD_EMPTY),
   handleInputErrors,
   authenticate,
   OrderController.createOrder
