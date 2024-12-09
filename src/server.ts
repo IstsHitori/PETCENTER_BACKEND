@@ -8,6 +8,7 @@ import historiesRoutes from "./routes/historiesRoutes";
 import categoryRoutes from "./routes/categoryRoutes";
 import productRoutes from "./routes/productsRoutes";
 import serviceRoutes from "./routes/serviceRoutes";
+import orderRoutes from "./routes/orderRoutes";
 import cors from "cors";
 import { corsConfig } from "./config/cors";
 //Para utilizar variables de entorno
@@ -25,4 +26,5 @@ app.use("/api/histories", historiesRoutes);
 app.use("/api/category", categoryRoutes);
 app.use("/api/product",productRoutes );
 app.use("/api/service",serviceRoutes );
+app.use("/api/order",orderRoutes);
 export default app;

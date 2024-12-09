@@ -36,3 +36,8 @@ export enum SERVICE_ERRORS{
     SERVICE_NOT_FOUND = "El servicio no se encontro.",
     
 }
+export enum ORDER_ERRORS{
+    ITEM_EMPTY = "Error, no hay ningún item seleccionado para vender",
+    CUSTOMER_EMPTY = "Error, no hay datos del cliente ",
+    TOTAL_AMOUNT_EMPTY = "Error, se debe calcular el valor total a pagar ",
+}

@@ -1,19 +1,19 @@
 import mongoose, { Document, Schema, Types } from "mongoose";
 
-export interface IOrder_Items extends Document {
+export interface IOrder_Item extends Document {
   product: Types.ObjectId;
   quantity: Number;
   price: Number;
 }
 
-const OrderItemsSchema: Schema = new Schema({
+export const OrderItemsSchema: Schema = new Schema({
   product: {
     type: Types.ObjectId,
     ref: "Product",
     required: true,
   },
   quantity: {
-    types: Number,
+    type: Number,
     required: true,
   },
   price: {
@@ -21,8 +21,3 @@ const OrderItemsSchema: Schema = new Schema({
     required: true,
   },
 });
-
-export const OrderItems = mongoose.model<IOrder_Items>(
-  "OrderItems",
-  OrderItemsSchema
-);
