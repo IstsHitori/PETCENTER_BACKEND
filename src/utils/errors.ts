@@ -41,4 +41,6 @@ export enum ORDER_ERRORS{
     CUSTOMER_EMPTY = "Error, no hay datos del cliente ",
     TOTAL_AMOUNT_EMPTY = "Error, se debe calcular el valor total a pagar ",
     METHOD_EMPTY = "Error, se debe agregar el metodo de pago",
+    PRODUCT_IN_SERVICE = "No se puede eliminar este producto porque existe en un servicio.",
+    PRODUCT_IN_ORDER = "No se puede eliminar este producto porque existe en una orden de compra.",
 }

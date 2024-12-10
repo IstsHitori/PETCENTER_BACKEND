@@ -1,6 +1,9 @@
 import { Request, Response } from "express";
 import { Product } from "../models/Product";
-import { PRODUCT_ERRORS } from "../utils/errors";
+import { ORDER_ERRORS, PRODUCT_ERRORS } from "../utils/errors";
+import { Service } from "../models/Service";
+import { Order } from "../models/Order";
+import mongoose from "mongoose";
 
 export class ProductController {
   static createProduct = async (req: Request, res: Response) => {
@@ -34,11 +37,31 @@ export class ProductController {
     try {
       const { id } = req.params;
       const product = await Product.findById(id);
+
+      const objectId = new mongoose.Types.ObjectId(id);
+
       if (!product) {
         const error = new Error(PRODUCT_ERRORS.PRODUCT_DOESNT_EXIST);
         return res.status(404).json({ msg: error.message });
       }
-      await product.deleteOne();
+      //Buscamos si ese producto está en un servicio o en una orden,
+      const existProductInService = await Service.findOne({
+        product: objectId,
+      });
+      const existProductInOrder = await Order.findOne({
+        "items.product": objectId,
+      });
+
+      if (existProductInService) {
+        const error = new Error(ORDER_ERRORS.PRODUCT_IN_SERVICE);
+        return res.status(405).json({ msg: error.message });
+      }
+      if (existProductInOrder) {
+        const error = new Error(ORDER_ERRORS.PRODUCT_IN_ORDER);
+        return res.status(405).json({ msg: error.message });
+      }
+      product.isDeleted = true;
+      await product.save();
       res.send("Se ha eliminado el producto");
     } catch (error) {
       console.log(error);
@@ -47,7 +70,7 @@ export class ProductController {
 
   static updateProduct = async (req: Request, res: Response) => {
     try {
-      const {id} = req.params;
+      const { id } = req.params;
       const { name, price, witght, quantity, category, brand } = req.body;
       const searchProduct = await Product.findById(id);
       if (!searchProduct) {

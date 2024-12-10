@@ -5,6 +5,7 @@ export interface IProduct extends Document{
     brand:string;
     witght:string;
     quantity:number;
+    isDeleted:boolean;
     category:Types.ObjectId
 }
 
@@ -34,7 +35,19 @@ const ProductSchema: Schema = new Schema({
         type:Types.ObjectId,
         required:true,
         ref:"Category"
+    },
+    isDeleted:{
+        type:Boolean,
+        default:false
     }
+    
 });
 
+ProductSchema.pre("find",function(){
+    this.where({isDeleted:false})
+})
+
+ProductSchema.pre("findOne",function(){
+    this.where({isDeleted:false})
+})
 export const Product = mongoose.model<IProduct>("Product",ProductSchema)
