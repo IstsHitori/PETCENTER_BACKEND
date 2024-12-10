@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { Order } from "../models/Order";
 import { IOrder_Item } from "../models/OrderItem";
 import { Customer, ICustomer } from "../models/Customer";
+import { Product } from "../models/Product";
 
 interface ICreateOrder {
   items: IOrder_Item[];
@@ -33,6 +34,12 @@ export class OrderController {
           payment_method,
         });
         await order.save();
+        for (const item of items) {
+          await Product.findByIdAndUpdate(item.product, {
+            $inc: { quantity: -item.quantity },
+          });
+        }
+
         return res.send("Orden creada");
       }
       const newCustomer = new Customer(customer);
@@ -43,6 +50,11 @@ export class OrderController {
         payment_method,
       });
       await newCustomer.save();
+      for (const item of items) {
+        await Product.findByIdAndUpdate(item.product, {
+          $inc: { quantity: -item.quantity },
+        });
+      }
       await order.save();
       return res.send("Se ha creado la orden");
     } catch (error) {
