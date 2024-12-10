@@ -40,10 +40,11 @@ export class OrderController {
         items,
         total_amount,
         customer: newCustomer._id,
-        payment_method
+        payment_method,
       });
       await newCustomer.save();
       await order.save();
+      return res.send("Se ha creado la orden");
     } catch (error) {
       console.log(error);
     }
