@@ -89,7 +89,7 @@ export class AuthController {
       res.send(token);
     } catch (error) {
       console.log("hubo un error");
-      
+
       console.log(error.message);
     }
   };
@@ -130,16 +130,16 @@ export class AuthController {
       console.log(error);
     }
   };
-  static getProfile = async(req:Request, res:Response) => {
+  static getProfile = async (req: Request, res: Response) => {
     const veterinary = req.veterinary;
-    if(!veterinary){
+    if (!veterinary) {
       const error = new Error("Veterinario no encontrado");
-      return res.status(401).json({error:error.message});
+      return res.status(401).json({ error: error.message });
     }
 
     res.json({
-      name:veterinary.name,
-      userName:veterinary.userName
-    })
-  }
+      name: veterinary.name,
+      userName: veterinary.userName,
+    });
+  };
 }
