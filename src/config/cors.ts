@@ -8,7 +8,7 @@ export const corsConfig: CorsOptions = {
     //el la segunda condición no iba
     if (process.argv[2] === "--api") {
       //aqui va undefined en el push
-      whiteList.push(undefined);
+      whiteList.push("https://petcenter-frontend.vercel.app");
     }
     if (whiteList.includes(origin)) {
       callback(null, true);
